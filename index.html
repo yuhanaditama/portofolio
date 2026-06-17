@@ -1,13 +1,531 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Saya</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yuhananda Aditama · Senior Software Engineer</title>
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0b1120;
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #111827;
+            border-radius: 2rem;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            border: 1px solid #1e293b;
+        }
+
+        /* ----- LINKS & TEXT ----- */
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #93c5fd;
+            text-decoration: underline;
+        }
+
+        .highlight {
+            color: #38bdf8;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #1e293b;
+            color: #94a3b8;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+            border: 1px solid #334155;
+        }
+
+        /* ----- HEADER / HERO ----- */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .hero-left h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-left .title-role {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #94a3b8;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-left .title-role span {
+            color: #38bdf8;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .contact-info a {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-info a i {
+            color: #38bdf8;
+            width: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .hero-right {
+            background: #1e293b;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .hero-right i {
+            color: #4ade80;
+            font-size: 0.8rem;
+        }
+        .hero-right span {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* ----- ABOUT ----- */
+        .about {
+            margin-bottom: 2.8rem;
+        }
+        .about p {
+            font-size: 1.08rem;
+            color: #cbd5e1;
+            max-width: 85%;
+            line-height: 1.8;
+        }
+
+        /* ----- SECTION TITLES ----- */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #f1f5f9;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 0.7rem;
+        }
+        .section-title i {
+            color: #38bdf8;
+            font-size: 1.3rem;
+        }
+
+        /* ----- EXPERIENCE (TIMELINE) ----- */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-left: 1.2rem;
+            border-left: 2px solid #1e293b;
+        }
+        .experience-item:hover {
+            border-left-color: #38bdf8;
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+        .exp-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        .exp-header .company {
+            font-weight: 500;
+            color: #94a3b8;
+        }
+        .exp-header .company i {
+            color: #60a5fa;
+            margin-right: 0.3rem;
+        }
+        .exp-date {
+            font-size: 0.85rem;
+            color: #64748b;
+            background: #1e293b;
+            padding: 0.15rem 0.9rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .exp-sub {
+            font-weight: 500;
+            color: #60a5fa;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-desc {
+            list-style: none;
+            margin-top: 0.4rem;
+        }
+        .exp-desc li {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .exp-desc li::before {
+            content: "▹";
+            color: #38bdf8;
+            position: absolute;
+            left: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.6rem;
+        }
+        .tech-stack .tag {
+            background: #0f172a;
+            border-color: #1e293b;
+            color: #94a3b8;
+            font-size: 0.7rem;
+        }
+
+        /* ----- SKILLS GRID ----- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .skill-category {
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #1e293b;
+        }
+        .skill-category h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+        .skill-category p {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* ----- EDUCATION ----- */
+        .edu-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            background: #0f172a;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+        }
+        .edu-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .edu-item .uni {
+            color: #94a3b8;
+        }
+        .edu-item .year {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* ----- FOOTER ----- */
+        .footer {
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer p {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+        .footer .social a {
+            color: #64748b;
+            font-size: 1.2rem;
+            margin-left: 1.2rem;
+            transition: color 0.2s;
+        }
+        .footer .social a:hover {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .hero {
+                flex-direction: column;
+            }
+            .hero-left h1 {
+                font-size: 2.2rem;
+            }
+            .about p {
+                max-width: 100%;
+                font-size: 1rem;
+            }
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
+            .hero-right {
+                margin-top: 1rem;
+            }
+            .footer {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
+            .footer .social a {
+                margin-left: 0;
+                margin-right: 1.2rem;
+            }
+            .contact-info {
+                gap: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Halo, Saya [Nama Kamu]</h1>
-    <p>Ini adalah website portofolio saya.</p>
-    <p>Website ini di-host menggunakan GitHub Pages.</p>
+
+<div class="container">
+
+    <!-- ========== HERO ========== -->
+    <div class="hero">
+        <div class="hero-left">
+            <h1>Yuhananda Aditama</h1>
+            <div class="title-role">
+                <span>Senior Software Engineer</span> · Full-Stack &amp; Mobile
+            </div>
+            <div class="contact-info">
+                <a href="mailto:yuhan.adit@gmail.com"><i class="fas fa-envelope"></i> yuhan.adit@gmail.com</a>
+                <a href="#"><i class="fas fa-phone-alt"></i> +62 857 9926 1521</a>
+                <a href="https://www.linkedin.com/in/yuhanadit/" target="_blank"><i class="fab fa-linkedin-in"></i> linkedin.com/in/yuhanadit</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Yogyakarta, ID</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <i class="fas fa-circle"></i>
+            <span>Open to opportunities</span>
+        </div>
+    </div>
+
+    <!-- ========== ABOUT ========== -->
+    <div class="about">
+        <p>
+            <span class="highlight">Bridging Mathematics, Mobile, and Enterprise Innovation.</span><br/>
+            With a foundation in Mathematics and a passion for crafting scalable digital solutions, I have evolved from a dedicated Android developer into a versatile full-stack and enterprise application engineer. My journey encompasses building critical logistics platforms, mentoring the next generation of developers, and currently driving automation and efficiency within global enterprise systems at IBM. I thrive on solving complex problems — whether it's optimizing delivery routes, implementing real-time chat protocols, or integrating AI-driven workflows.
+        </p>
+    </div>
+
+    <!-- ========== EXPERIENCE ========== -->
+    <div class="section-title">
+        <i class="fas fa-briefcase"></i> Professional Experience
+    </div>
+
+    <!-- IBM -->
+    <div class="experience-item">
+        <div class="exp-header">
+            <h3>Application Developer</h3>
+            <span class="exp-date">May 2025 – Present</span>
+        </div>
+        <div class="exp-sub"><i class="fas fa-building"></i> IBM Delivery Indonesia</div>
+        <ul class="exp-desc">
+            <li>Spearheading enterprise solution delivery using <strong>Oracle Fusion</strong> and <strong>Oracle APEX</strong>, ensuring seamless integration for global business platforms.</li>
+            <li>Leveraging <strong>Prompt Engineering</strong> to streamline internal automation workflows, significantly reducing manual effort in quality processes.</li>
+            <li>Conducting rigorous platform analysis and testing using the Internal Quality Platform (IQP) to maintain high release standards.</li>
+            <li>Exploring <strong>Salesforce</strong> components to drive digital transformation and cross-functional synergy.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">Oracle Fusion</span>
+            <span class="tag">Oracle APEX</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">Salesforce</span>
+            <span class="tag">IQP</span>
+        </div>
+    </div>
+
+    <!-- XSIS Academy -->
+    <div class="experience-item">
+        <div class="exp-header">
+            <h3>Technical Competency Counselor</h3>
+            <span class="exp-date">Jun 2022 – May 2025</span>
+        </div>
+        <div class="exp-sub"><i class="fas fa-building"></i> XSIS Academy, PT XSIS Mitra Utama</div>
+        <ul class="exp-desc">
+            <li>Transitioned from practitioner to mentor, leading intensive bootcamps in <strong>Spring Boot</strong> and <strong>Katalon QA Automation</strong>.</li>
+            <li>Designed comprehensive learning modules and hands-on project exercises, empowering junior developers to achieve professional competence.</li>
+            <li>Expanded technical repertoire to include <strong>.NET</strong>, <strong>Vue.js</strong>, and <strong>Next.js</strong> through curriculum development.</li>
+            <li>Played a key role in shaping the technical workforce, bridging the gap between academic knowledge and industry demands.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Katalon</span>
+            <span class="tag">.NET</span>
+            <span class="tag">Vue.js</span>
+            <span class="tag">Next.js</span>
+        </div>
+    </div>
+
+    <!-- AnterAja -->
+    <div class="experience-item">
+        <div class="exp-header">
+            <h3>Android Developer (Client: AnterAja)</h3>
+            <span class="exp-date">Jun 2020 – Jun 2022</span>
+        </div>
+        <div class="exp-sub"><i class="fas fa-building"></i> PT XSIS Mitra Utama · Logistics Platform</div>
+        <ul class="exp-desc">
+            <li>Engineered pivotal features for a high-demand logistics platform, enhancing <strong>parcel pickup</strong> and <strong>real-time order tracking</strong> for thousands of daily users.</li>
+            <li>Collaborated closely with product teams to elevate user experience and optimize overall application performance.</li>
+            <li>Conducted systematic debugging and refactoring, ensuring production stability across diverse Android devices.</li>
+            <li>Architected scalable solutions using <strong>MVVM</strong> and <strong>Firebase</strong> to support rapid feature growth.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">Android</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Java</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">MVVM</span>
+        </div>
+    </div>
+
+    <!-- liteBIG -->
+    <div class="experience-item">
+        <div class="exp-header">
+            <h3>Android Developer (Client: liteBIG)</h3>
+            <span class="exp-date">Nov 2018 – Jun 2020</span>
+        </div>
+        <div class="exp-sub"><i class="fas fa-building"></i> PT XSIS Mitra Utama · Corporate Messenger</div>
+        <ul class="exp-desc">
+            <li>Strengthened a corporate messaging solution, specializing in <strong>XMPP-based</strong> real-time communication.</li>
+            <li>Enhanced critical features including file-sharing, large-group management, and chat synchronization for enterprise teams.</li>
+            <li>Resolved complex issues related to message delivery, edit/remove functionality, and UI/UX consistency.</li>
+            <li>Implemented robust CRUD operations and error-handling mechanisms to ensure seamless user experience.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">Android</span>
+            <span class="tag">Java</span>
+            <span class="tag">XMPP</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">REST API</span>
+            <span class="tag">XML</span>
+        </div>
+    </div>
+
+    <!-- ========== SKILLS ========== -->
+    <div class="section-title" style="margin-top: 2rem;">
+        <i class="fas fa-code"></i> Technical Proficiency
+    </div>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <h4>Mobile &amp; Frontend</h4>
+            <p>Android (Kotlin/Java) · Vue.js · Next.js · XML · JSON</p>
+        </div>
+        <div class="skill-category">
+            <h4>Backend &amp; Enterprise</h4>
+            <p>Spring Boot · Oracle Fusion · Oracle APEX · .NET · Salesforce</p>
+        </div>
+        <div class="skill-category">
+            <h4>QA &amp; Automation</h4>
+            <p>Katalon · Internal Quality Platform (IQP) · Prompt Engineering</p>
+        </div>
+        <div class="skill-category">
+            <h4>Architecture &amp; Tools</h4>
+            <p>MVVM · REST APIs · Firebase · Git · XMPP · CRUD</p>
+        </div>
+    </div>
+
+    <!-- ========== EDUCATION ========== -->
+    <div class="section-title">
+        <i class="fas fa-graduation-cap"></i> Education
+    </div>
+    <div class="edu-item">
+        <div>
+            <h3>Bachelor of Mathematics</h3>
+            <span class="uni">Yogyakarta State University</span>
+        </div>
+        <span class="year">Graduated 2018</span>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <p>&copy; 2026 Yuhananda Aditama. Crafted with precision.</p>
+        <div class="social">
+            <a href="https://www.linkedin.com/in/yuhanadit/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/yuhanadit" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:yuhan.adit@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
